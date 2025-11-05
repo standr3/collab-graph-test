@@ -38,13 +38,14 @@ export function clearRefreshCookie(res) {
   res.clearCookie("refresh_token", {
     httpOnly: true,
     secure: isProd,
-    sameSite: "lax",
-    path: "/api/auth",
+    sameSite: isProd ? "none" : "lax",
+    path: "/",
   });
   res.clearCookie("rt_demo", {
     httpOnly: false,
     secure: isProd,
-    sameSite: "lax",
+    sameSite: isProd ? "none" : "lax",
     path: "/",
   });
 }
+
